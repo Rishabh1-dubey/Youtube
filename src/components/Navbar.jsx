@@ -2,15 +2,25 @@ import React from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { HiBellAlert } from "react-icons/hi2";
 import { MdAccountCircle } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { toggleSidebar } from "../utils/appSlice";
 const Navbar = () => {
+
+const dispatch = useDispatch()
+
+const toggleHandler=()=>{
+  dispatch(toggleSidebar())
+}
+
+
   return (
-    <div className="flex  justify-between mt-2 border-b-2">
+    <div className="flex  justify-between mt-2 border-b-2 ">
       {/* 1st component  */}
       <div className="flex justify-between gap-6 items-center -mt-6 mx-4">
-        <div>
-        <RxHamburgerMenu className="text-3xl" />
+      
+        <RxHamburgerMenu  onClick={toggleHandler} className="text-3xl cursor-pointer" />
           
-        </div>
+     
         <div className="">
           <img
             className="h-20 w-20  "

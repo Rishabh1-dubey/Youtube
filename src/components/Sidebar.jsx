@@ -9,7 +9,13 @@ import { BiSolidLike } from "react-icons/bi";
 import { FaFireAlt } from "react-icons/fa";
 import { CiMusicNote1 } from "react-icons/ci";
 import { MdMovieCreation } from "react-icons/md";
+import { useSelector } from "react-redux";
 const Sidebar = () => {
+
+const open = useSelector((store)=> store.app.open)
+console.log(open)
+
+
   const sideItem = [
     {
       icon: <AiOutlineHome className="text-[23px] " />,
@@ -29,7 +35,7 @@ const Sidebar = () => {
     },
     {
       icon: <MdPlaylistPlay className="text-[23px] " />,
-      title: "Vidoed",
+      title: "Playlist",
     },
     {
       icon: <BiSolidVideos className="text-[23px] " />,
@@ -39,29 +45,35 @@ const Sidebar = () => {
       icon: <FaFireAlt className="text-[23px] " />,
       title: "Music",
     },
+
     {
       icon: <CiMusicNote1 className="text-[23px] " />,
-      title: "Home",
+      title: "Music",
     },
     {
       icon: <MdMovieCreation className="text-[23px] " />,
-      title: "Playlist",
-    },
+      title: "Video",
+    }, 
+ 
+    
   ];
 
   return (
-    <div className="bg-slate-300 w-56 h-[630px]">
+    <div className={`bg-slate-900 w-56 h-[630px] overflow-y-scroll overflow-x-hidden custom-scrollbar text-white ${open ? "" : "hidden"} `}>
       <div className="flex">
         <div className=" flex-col py-2 px-2 gap-2 items-center mt-4">
-          {sideItem.map((item) => {
+          {sideItem.map((item ,index) => {
             return (
-              <div className="flex my-4 mx-4 mt-4 gap-9 text-lg">
+              <div key={index} className="flex my-5 mx-4 mt-4 gap-9 text-lg">
                 {item.icon}
                 <h1>{item.title}</h1>
               </div>
             );
           })}
+        <h1>Subscriptions</h1>
+        <div className="border border-b-slate-500 mt-2"></div>
         </div>
+
       </div>{" "}
     </div>
   );
