@@ -4,7 +4,7 @@ import { HiBellAlert } from "react-icons/hi2";
 import { MdAccountCircle } from "react-icons/md";
 const Navbar = () => {
   return (
-    <div className="flex  justify-between mt-4 border-b-2">
+    <div className="flex  justify-between mt-2 border-b-2">
       {/* 1st component  */}
       <div className="flex justify-between gap-6 items-center -mt-6 mx-4">
         <div>
