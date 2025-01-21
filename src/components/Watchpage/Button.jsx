@@ -4,10 +4,11 @@ const Button = () => {
 
  const   ButtonList =["All","JavsScript","Resume","Podcast","Software Testing","Live","Music","Goals","Study Skills","Gadegets","Tech"]
   return (
-    <div className=' ' >{
+    <div className=' ' >
+      {
     ButtonList.map((buttonName,index)=>{
         return(
-            <button className='border border-slate-500 bg-gray-500 px-4 mx-2  py-1 rounded-xl'>{buttonName}</button> 
+            <button key={index} className='border border-slate-500 bg-gray-500 px-4 mx-2  py-1 rounded-xl'>{buttonName}</button> 
             
         )
     })  
