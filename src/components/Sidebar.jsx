@@ -59,7 +59,7 @@ console.log(open)
   ];
 
   return (
-    <div className={`bg-slate-900 w-56 h-[630px] overflow-y-scroll overflow-x-hidden custom-scrollbar text-white ${open ? "" : "hidden"} `}>
+    <div className={` bg-slate-900 w-full h-[630px] overflow-y-scroll overflow-x-hidden custom-scrollbar text-white ${open ? "" : "hidden"} `}>
       <div className="flex">
         <div className=" flex-col py-2 px-2 gap-2 items-center mt-4">
           {sideItem.map((item ,index) => {
