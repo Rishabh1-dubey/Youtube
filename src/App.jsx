@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="">
       <Navbar/>
-      <div className="flex bg-black">
+      <div className="flex">
         <Sidebar />
         <Feed />
       </div>
