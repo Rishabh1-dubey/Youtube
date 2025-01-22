@@ -4,6 +4,7 @@ import axios from "axios";
 import { YOUTUBE_VIDEO_URL } from "../../constents/youtube";
 import Avatar from "react-avatar";
 import VideoCard from "./VideoCard";
+import { Link } from "react-router-dom";
 
 const Feed = () => {
 
@@ -24,7 +25,7 @@ const [ video , setVideo]= useState([]);
   }, []);
 
   return (
-    <div className="text-white mt-4 ">
+    <div className="text-white mt-4 w-[100%] ">
       <div className="ml-12">
         <Button />
       </div>
@@ -32,12 +33,14 @@ const [ video , setVideo]= useState([]);
 
       {/* ------------------------ compoent started   */}
 
-<div className="flex flex-wrap">
+<div className="grid grid-cols-3 gap-2 mt-8 ">
 
 {
-  video.map((itemCard,)=>{
+  video.map((itemCard,item)=>{
     return <div className="ml-12">
-      <VideoCard key={itemCard.id} movieCard ={itemCard}/>
+      <Link to={`/watch?v=${itemCard.id}`}>
+      <VideoCard key={item} movieCard ={itemCard}/>
+      </Link>
     </div>
   })
 }
