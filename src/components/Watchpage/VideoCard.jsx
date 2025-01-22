@@ -13,7 +13,7 @@ const VideoCard = ({ movieCard }) => {
         `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${movieCard.snippet.channelId}&key=${YOUTUBE_API}`
       );
 
-      console.log(res.data);
+    
       setYtlogo(res.data.items[0].snippet.thumbnails.default.url);
     } catch (error) {
       console.log(error);
@@ -27,14 +27,14 @@ const VideoCard = ({ movieCard }) => {
   return (
     <>
     
-    <div className="w-94 cursor-pointer my-2">
+    <div className="w-96 cursor-pointer my-2">
       <img
         className="rounded-xl w-full"
         src={movieCard.snippet.thumbnails.medium.url}
         alt="ytvideo"
         />
       <div>
-        <div className="flex mt-6 gap-2">
+        <div className="flex mt-6 ">
           <Avatar src={ytlogo} size="40" round={true} style={{ border: '2px solid #fff', boxShadow: '0 0 10px rgba(0,0,0,0.2)' }}  />
           <div className="ml-2">
             <h1 className="font-bold text-black">{movieCard.snippet.title}</h1>

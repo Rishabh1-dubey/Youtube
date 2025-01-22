@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 const Sidebar = () => {
 
 const open = useSelector((store)=> store.app.open)
-console.log(open)
+
 
 
   const sideItem = [
@@ -59,7 +59,7 @@ console.log(open)
   ];
 
   return (
-    <div className={` bg-slate-900 w-[300px] h-[630px] overflow-y-scroll overflow-x-hidden custom-scrollbar text-white ${open ? "" : "hidden"} `}>
+    <div className={` bg-slate-900 w-[260px] h-[630px] overflow-y-scroll overflow-x-hidden custom-scrollbar text-white ${open ? "" : "hidden"} `}>
       <div className="flex">
         <div className=" flex-col py-2 px-2 gap-2 items-center mt-4">
           {sideItem.map((item ,index) => {
