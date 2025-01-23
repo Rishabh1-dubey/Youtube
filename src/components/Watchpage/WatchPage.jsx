@@ -9,8 +9,17 @@ import { AiOutlineLike } from "react-icons/ai";
 import { PiShareFatThin } from "react-icons/pi";
 import { RiDownloadLine } from "react-icons/ri";
 import { BiDislike } from "react-icons/bi";
+import { HiOutlineDotsVertical } from "react-icons/hi";
+import { IoMdSend } from "react-icons/io";
+import LiveChat from "../LiveChat";
+import { useDispatch } from "react-redux";
+import { setMessage } from "../../utils/chatSlice";
 
 const WatchPage = () => {
+const dispatch = useDispatch()
+
+
+  const [input, setInput] = useState("");
   const [singleVideo, setSingleVideo] = useState("");
   const [serachParams] = useSearchParams();
   const videoId = serachParams.get("v");
@@ -47,6 +56,13 @@ const WatchPage = () => {
       return count.toString();
     }
   }
+
+
+  //for like comment
+  const liveHandle=()=>{
+    dispatch(setMessage({name:"dubey", message:input}))
+    setInput("")
+  }
   return (
     <div>
       <Navbar />
@@ -55,16 +71,14 @@ const WatchPage = () => {
 
         {/* video component */}
         <div className="ml-4 mt-2 ">
-        
-            <iframe
-              width="900"
-              height="500"
-              className="rounded-xl"
-              src={`https://www.youtube.com/embed/${videoId}?&autoplay=1`}
-              title="YouTube video player"
-              frameborder="0"
-            ></iframe>
-       
+          <iframe
+            width="900"
+            height="500"
+            className="rounded-xl"
+            src={`https://www.youtube.com/embed/${videoId}?&autoplay=1`}
+            title="YouTube video player"
+            frameborder="0"
+          ></iframe>
 
           <h1 className="font-bold mt-4 text-xl">
             {singleVideo.snippet?.title}
@@ -94,26 +108,25 @@ const WatchPage = () => {
             {/* butoon for like ND SHARE */}
             <div className="flex items-center  ml-4 ">
               <div className=" flex ml-20 gap-4">
+                <div className=" flex gap-2 items-center text-lg border border-yellow-500 rounded-2xl cursor-pointer">
+                  <span className="flex items-center px-2 gap-2  hover:bg-gray-400 transition-all delay-150 hover:rounded-l-xl   ">
+                    <AiOutlineLike />{" "}
+                    {formatViews(singleVideo?.statistics?.likeCount)}{" "}
+                  </span>
+                  <span className="w-[1px] h-[23px] bg-slate-600"></span>
+                  <span className=" py-1 px-2 hover:bg-gray-400 hover:rounded-r-xl transition-all delay-150 ">
+                    <BiDislike />{" "}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2  border border-black rounded-2xl cursor-pointer px-4 text-lg hover:bg-gray-400 transition-all delay-150 ">
+                  <span className="font-semibold">share</span>
+                  <PiShareFatThin />
+                </div>
+                <div className="flex items-center gap-2  border border-black rounded-2xl cursor-pointer px-4 text-lg hover:bg-gray-400 transition-all delay-150">
+                  <span className="font-semibold">downlaod</span>
 
-              <div className=" flex gap-2 items-center text-lg border border-yellow-500 rounded-2xl cursor-pointer">
-                <span className="flex items-center px-2 gap-2  hover:bg-gray-400 transition-all delay-150 hover:rounded-l-xl   ">
-                  <AiOutlineLike />{" "}
-                  {formatViews(singleVideo?.statistics?.likeCount)}{" "}
-                </span>
-                <span className="w-[1px] h-[23px] bg-slate-600"></span>
-                <span className=" py-1 px-2 hover:bg-gray-400 hover:rounded-r-xl transition-all delay-150 ">
-                  <BiDislike />{" "}
-                </span>
-              </div>
-              <div className="flex items-center gap-2  border border-black rounded-2xl cursor-pointer px-4 text-lg hover:bg-gray-400 transition-all delay-150 ">
-                <span className="font-semibold">share</span>
-                <PiShareFatThin />
-              </div>
-              <div className="flex items-center gap-2  border border-black rounded-2xl cursor-pointer px-4 text-lg hover:bg-gray-400 transition-all delay-150">
-                <span className="font-semibold">downlaod</span>
-
-                <RiDownloadLine />
-              </div>
+                  <RiDownloadLine />
+                </div>
               </div>
             </div>
 
@@ -121,7 +134,38 @@ const WatchPage = () => {
           </div>
         </div>
         {/* live chat component */}
-        <div></div>
+        <div className="border border-red-200 w-[30%]  mx-4 mt-2 h-fit">
+          <div className="flex  justify-between  ">
+            <div>Live Chat</div>
+            <HiOutlineDotsVertical />
+          </div>
+          <div>
+            <div className="h-[30rem] overflow-y-auto">
+              <div>
+                <LiveChat />
+              </div>
+            </div>
+            <div className="flex justify-between ml-4 pb-3">
+              <Avatar
+                className="rounded-xl  border bg-cover"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWSd9ntnjxJieblDHXudyFyNaw3jYmHFuhaQ&s"
+                size="43"
+                round={true}
+              />
+
+              <input value={input}
+              onChange={(e)=>setInput(e.target.value)}
+                className=" border-b-blue-700 outline-none "
+                type="search"
+                placeholder="Enter your Search"
+              />
+              <button onClick={liveHandle} className=" rounded-full py-3 px-3 bg-slate-300">
+                <IoMdSend />
+              </button>
+              <div></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
