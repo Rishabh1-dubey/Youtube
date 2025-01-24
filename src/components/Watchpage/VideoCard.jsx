@@ -37,7 +37,7 @@ const VideoCard = ({ movieCard }) => {
         <div className="flex mt-6 ">
           <Avatar src={ytlogo} size="40" round={true} style={{ border: '2px solid #fff', boxShadow: '0 0 10px rgba(0,0,0,0.2)' }}  />
           <div className="ml-2">
-            <h1 className="font-bold text-black">{movieCard.snippet.title}</h1>
+            <h1 className="tracking-tight font-bold text-black">{movieCard.snippet.title}</h1>
             <p className="text-sm text-gray-500">
               {movieCard.snippet.channelTitle}
             </p>

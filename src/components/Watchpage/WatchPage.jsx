@@ -140,9 +140,9 @@ const dispatch = useDispatch()
             <HiOutlineDotsVertical />
           </div>
           <div>
-            <div className="h-[30rem] overflow-y-auto">
+            <div className="h-[30rem] overflow-y-auto flex flex-col-reverse">
               <div>
-                <LiveChat />
+                <LiveChat videoId={videoId} />
               </div>
             </div>
             <div className="flex justify-between ml-4 pb-3">
