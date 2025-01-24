@@ -2,25 +2,26 @@ import React, { useEffect } from "react";
 import Avatar from "react-avatar";
 import { useDispatch, useSelector } from "react-redux";
 import ChatMessage from "./ChatMessage";
-import { setMessage } from "../utils/chatSlice";
+import { clearChat, setMessage } from "../utils/chatSlice";
 import { generateMessage, generateName, generateProfileImage } from "../constents/youtube";
 
-const LiveChat = () => {
+const LiveChat = ({videoId}) => {
   const chat = useSelector((store) => store.chat.message);
-
-  console.log(chat);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //  const timer= setInterval(() => {
-  //     dispatch(setMessage({ name: generateName(), message: generateMessage(),profile:generateProfileImage() }));
-  //   }, 1000);
+  useEffect(() => {
 
-  //   return(()=>{
-  //  clearInterval(timer)
-  //   })
+ dispatch(clearChat());
+   const timer= setInterval(() => {
+      dispatch(setMessage({ name: generateName(), message: generateMessage(),profile:generateProfileImage() }));
+    }, 1000);
 
-  // }, []);
+    return(()=>{
+   clearInterval(timer)
+    })
+
+  }, [dispatch,videoId])
+
   return (
     <div>
       {chat.map((item, idx) => {

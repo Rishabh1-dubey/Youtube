@@ -59,12 +59,12 @@ const open = useSelector((store)=> store.app.open)
   ];
 
   return (
-    <div className={` bg-slate-900 w-[260px] h-[630px] overflow-y-scroll overflow-x-hidden custom-scrollbar text-white ${open ? "" : "hidden"} `}>
+    <div className={` bg-slate-900 w-[280px] h-[630px] overflow-y-scroll overflow-x-hidden custom-scrollbar text-white ${open ? "" : "hidden"} `}>
       <div className="flex">
-        <div className=" flex-col py-2 px-2 gap-2 items-center mt-4">
+        <div className=" flex-col py-1 px-2 gap-1 items-center mt-4">
           {sideItem.map((item ,index) => {
             return (
-              <div key={index} className="flex my-5 mx-4 mt-4 gap-9 text-lg">
+              <div key={index} className="flex my-6 mx-2 mt-4 gap-6 text-lg">
                 {item.icon}
                 <h1>{item.title}</h1>
               </div>
