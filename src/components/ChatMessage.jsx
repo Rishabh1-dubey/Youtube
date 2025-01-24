@@ -3,16 +3,16 @@ import Avatar from 'react-avatar'
 
 const ChatMessage = ({item}) => {
   return (
-    <div className="flex items-center ">
-      <div>
+    <div className="flex items-center mt-1 ">
+      <div className='ml-2 pb-2'>
         <Avatar
-          className="rounded-xl  border bg-cover"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWSd9ntnjxJieblDHXudyFyNaw3jYmHFuhaQ&s"
+          className="rounded-xl  border bg-cover "
+          src={item.profile}
           size="43"
           round={true}
         />
       </div>
-      <div className="text-slate-500 ml-2">{item.name}</div>
+      <div className="text-slate-500 ml-2 ">{item.name}</div>
       <div className="ml-4">{item.message}</div>
     </div>
   )

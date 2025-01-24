@@ -1,24 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Avatar from "react-avatar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ChatMessage from "./ChatMessage";
+import { setMessage } from "../utils/chatSlice";
+import { generateMessage, generateName, generateProfileImage } from "../constents/youtube";
 
 const LiveChat = () => {
-  const chat = useSelector(store=>store.chat.message);
-  console.log(chat)
-  return (
-   <div>
+  const chat = useSelector((store) => store.chat.message);
 
+  console.log(chat);
+  const dispatch = useDispatch();
 
-    {
-chat.map((item,idx)=>{
+  // useEffect(() => {
+  //  const timer= setInterval(() => {
+  //     dispatch(setMessage({ name: generateName(), message: generateMessage(),profile:generateProfileImage() }));
+  //   }, 1000);
+
+  //   return(()=>{
+  //  clearInterval(timer)
+  //   })
+
+  // }, []);
   return (
-    <ChatMessage key={idx} item ={item}/>
-  )
-})
-    }
-  
-   </div>
+    <div>
+      {chat.map((item, idx) => {
+        return <ChatMessage key={idx} item={item} />;
+      })}
+    </div>
   );
 };
 
