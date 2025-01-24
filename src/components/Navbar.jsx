@@ -3,18 +3,19 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { HiBellAlert } from "react-icons/hi2";
 import { MdAccountCircle } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
+import { IoSearch } from "react-icons/io5"
 import {
   setCategory,
   setSeachSuggestion,
   toggleSidebar,
 } from "../utils/appSlice";
 import axios from "axios";
-import { YOUTUBE_API } from "../constents/youtube";
 const Navbar = () => {
+
+
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
-
-  const { searchSuggestion } = useSelector((store) => store.app);
+  const searchSuggestion = useSelector((store) => store.app.searchSuggestion);
   console.log(searchSuggestion);
   const toggleHandler = () => {
     dispatch(toggleSidebar());
@@ -27,7 +28,11 @@ const Navbar = () => {
   const showSearchSuggestion = async () => {
     try {
       const res = await axios.get(
-        `http://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=${input} ,{mode: 'no-cors',method: "get"}`
+        "https://api.codetabs.com/v1/proxy?quest=" +
+          encodeURIComponent(
+            "https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=" +
+              input
+          )
       );
       console.log(res);
       dispatch(setSeachSuggestion(res.data[1]));
@@ -69,9 +74,23 @@ const Navbar = () => {
         <button
           onClick={searchButton}
           className="border border-slate-700 px-2 py-2 rounded-r-3xl"
-        >dd</button>
-        </div>
-       
+        >
+          dd
+        </button>
+      </div>
+      <div className="absolute z-50 bg-slate-900 py-4 mt-12 mr-28 left-[36%] w-[29%] rounded-lg hover:bg-gray-800 ">
+        <ul>
+          {searchSuggestion.map((text, idx) => {
+            return (
+              <div className=" flex  justify-between items-center px-4  cursor-pointer hover:bg-gray-600 rounded-sm  w-full pb-2 text-white font-semibold text-lg">
+                <li>{text}</li>
+                <IoSearch className="text-xl" />
+
+              </div>
+            );
+          })}
+        </ul>
+      </div>
 
       {/* ------------------ */}
 
