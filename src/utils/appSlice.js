@@ -7,7 +7,8 @@ export const appSlice = createSlice({
   open:true,
   video:[],
   category:"All",
-  searchSuggestion:[]
+  searchSuggestion:[],
+  searchVideo:[]
   },
   reducers: {
   toggleSidebar:(state)=>{
@@ -21,10 +22,13 @@ export const appSlice = createSlice({
   } ,
   setSeachSuggestion:(state,action)=>{
     state.searchSuggestion= action.payload
+  },
+  SetsearchVideo:(state,action)=>{
+    state.searchVideo= action.payload
   }
 }
   })
 // Action creators are generated for each case reducer function
-export const { toggleSidebar,setHome,setCategory,setSeachSuggestion } = appSlice.actions
+export const { toggleSidebar,setHome,setCategory,setSeachSuggestion,SetsearchVideo } = appSlice.actions
 
 export default appSlice.reducer
