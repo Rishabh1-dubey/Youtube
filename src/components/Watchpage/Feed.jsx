@@ -19,6 +19,7 @@ const Feed = () => {
       const res = await axios.get(
         `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${category}&type=video&key=${YOUTUBE_API}`
       );
+      console.log(res.data)
       dispatch(setHome(res?.data?.items));
     } catch (error) {}
   };
@@ -27,7 +28,7 @@ const Feed = () => {
   const YuuTubeVideoFetch = async () => {
     try {
       const res = await axios.get(`${YOUTUBE_VIDEO_URL}`);
-
+      console.log(res);
       // setVideo(res?.data?.items);
       dispatch(setHome(res?.data?.items));
     } catch (error) {

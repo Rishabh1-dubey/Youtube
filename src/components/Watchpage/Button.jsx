@@ -24,9 +24,9 @@ const dispatch = useDispatch()
     "Podcast",
     "Cricket",
     "Live",
+    "studySkill",
     "Music",
-    "Goals",
-    "Gadegets",
+    "Goals", 
     "Tech",
     "Anime",
     "SSC",
@@ -43,7 +43,7 @@ const dispatch = useDispatch()
               buttonLoader(buttonName);
             }}
             key={index}
-            className={`border border-slate-500  px-4 mx-2 transition-all  py-1 rounded-xl ${
+            className={`border border-slate-500  px-4 mx-2 transition-all  py-1 rounded-xl whitespace-nowrap ${
               active === buttonName ? "bg-black text-white" : "bg-gray-500"
             }`}
             >
